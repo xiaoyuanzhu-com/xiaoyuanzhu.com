@@ -4,8 +4,9 @@ import type { iconPaths } from './IconPaths';
 import ThemeToggle from './ThemeToggle.astro';
 
 /** Main menu items */
-const textLinks: { label: string; href: string }[] = [
+const textLinks: { label: string; href: string; external?: boolean }[] = [
 	{ label: 'Projects', href: '/' },
+	{ label: 'Blog ↗', href: 'https://blog.xiaoyuanzhu.com/', external: true },
 	{ label: 'About', href: '/about/' },
 ];
 
@@ -46,9 +47,15 @@ const isCurrentPage = (href: string) => {
 	<noscript>
 		<ul class="nav-items">
 			{
-				textLinks.map(({ label, href }) => (
+				textLinks.map(({ label, href, external }) => (
 					<li>
-						<a aria-current={isCurrentPage(href) ? 'page' : null} class="link" href={href}>
+						<a
+							aria-current={!external && isCurrentPage(href) ? 'page' : null}
+							class="link"
+							href={href}
+							target={external ? '_blank' : null}
+							rel={external ? 'noopener noreferrer' : null}
+						>
 							{label}
 						</a>
 					</li>
@@ -73,9 +80,15 @@ const isCurrentPage = (href: string) => {
 	<div id="menu-content" hidden>
 		<ul class="nav-items">
 			{
-				textLinks.map(({ label, href }) => (
+				textLinks.map(({ label, href, external }) => (
 					<li>
-						<a aria-current={isCurrentPage(href) ? 'page' : null} class="link" href={href}>
+						<a
+							aria-current={!external && isCurrentPage(href) ? 'page' : null}
+							class="link"
+							href={href}
+							target={external ? '_blank' : null}
+							rel={external ? 'noopener noreferrer' : null}
+						>
 							{label}
 						</a>
 					</li>
