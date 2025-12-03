@@ -31,7 +31,12 @@ const { Content } = await render(entry);
 			<header>
 				<div class="wrapper stack gap-2">
 					<a class="back-link" href="/"><Icon icon="arrow-left" /> Projects</a>
-					<Hero title={entry.data.title} align="start">
+					<Hero title={entry.data.link ? undefined : entry.data.title} align="start">
+						{entry.data.link ? (
+							<a class="title-link" href={entry.data.link} target="_blank" rel="noopener" slot="title">
+								{entry.data.title} <span class="external-arrow">↗</span>
+							</a>
+						) : null}
 						<div class="details">
 							<div class="tags">
 								{entry.data.tags.map((t) => <Pill>{t}</Pill>)}
@@ -75,6 +80,26 @@ const { Content } = await render(entry);
 	.tags {
 		display: flex;
 		gap: 0.5rem;
+		align-items: center;
+	}
+
+	.title-link {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	.title-link:hover {
+		text-decoration: underline;
+	}
+
+	.external-arrow {
+		opacity: 0.6;
+		font-size: 0.7em;
+		vertical-align: super;
+	}
+
+	.title-link:hover .external-arrow {
+		opacity: 1;
 	}
 
 	.description {
