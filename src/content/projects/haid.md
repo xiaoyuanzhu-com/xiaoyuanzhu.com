@@ -1,6 +1,6 @@
 ---
 title: Homelab AI in Docker
-publishDate: 2024-12-01 00:00:00
+publishDate: 2025-11-01 00:00:00
 img: /assets/haid.png
 img_alt: Docker container running AI services
 description: |

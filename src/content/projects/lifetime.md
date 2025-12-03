@@ -1,6 +1,6 @@
 ---
 title: Lifetime
-publishDate: 2020-03-02 00:00:00
+publishDate: 2025-10-01 00:00:00
 img: /assets/lifetime.png
 img_alt: Time visualization showing a grid of months representing a human lifetime
 description: |
